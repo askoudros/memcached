@@ -7,7 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-
 package "memcached" do
 	action :install
 end
@@ -18,6 +17,7 @@ template "/etc/memcached.conf" do
     group "root"
     mode "0644"
     variables(
+      :ip_address   => node['memcached']['ip_address'],
       :user       	=> node['memcached']['user'],
       :port       	=> node['memcached']['port'],
       :memory	  	=> node['memcached']['memory'],
